@@ -40,12 +40,14 @@ class RiwayatController extends Controller
             return response()->json(['status' => 0, 'error' => $validatedData->errors()]);
         }
 
-        Riwayat::create([
+        $riwayat =  Riwayat::create([
             'name' => $request->name,
             'jenis_sampah_id' => $request->jenis_sampah_id,
             'jumlah_kg' => $request->jumlah_kg,
             'total_harga' => $request->total_biaya,
         ]);
+
+        
 
         return response()->json(['status' => 1, 'message' => 'Data Added successfully!']);
     }

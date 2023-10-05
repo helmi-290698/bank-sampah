@@ -46,7 +46,7 @@
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
-    <script src="{{ asset('assets/vendor/js/template-customizer.js') }}"></script>
+    {{-- <script src="{{ asset('assets/vendor/js/template-customizer.js') }}"></script> --}}
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('assets/js/config.js') }}"></script>
 </head>
@@ -192,7 +192,7 @@
                                                                 <input class="form-control" id="total_biaya"
                                                                     type="text" name="total_biaya"
                                                                     placeholder="total_biaya" autofocus readonly />
-                                                                <label>Jumlah Kg</label>
+                                                                <label>Total Uang Yang Di Terima</label>
                                                             </div>
                                                         </div>
                                                         <span class="text-danger harga_error "></span>
@@ -209,15 +209,7 @@
                             <div class="col-md">
                                 <div class="card card-action mb-4">
                                     <div class="card-body">
-                                        <p class="card-text">
-                                            To create a card with expand(fullscreen) action, use
-                                            <code>.card-expand</code> class with action
-                                            item. Use <kbd>ESC</kbd> key to exit from the fullscreen mode.
-                                        </p>
-                                        <p class="card-text">
-                                            Click on <i class="tf-icons mdi mdi-fullscreen"></i> icon to see expand
-                                            card in action.
-                                        </p>
+                                        <h5 class="h5">Detail Transaksi</h5>
                                     </div>
                                 </div>
                             </div>
