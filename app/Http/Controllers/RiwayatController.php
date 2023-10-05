@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\RiwayatDataTable;
 use App\Models\Jenis_sampah;
 use App\Models\Riwayat;
 use Illuminate\Http\Request;
@@ -12,9 +13,10 @@ class RiwayatController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(RiwayatDataTable $datatable)
     {
-        //
+        $title = 'Riwayat Transaksi';
+        return $datatable->render('admin.riwayat', ['title' => $title]);
     }
 
     /**

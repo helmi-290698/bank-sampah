@@ -36,5 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/jenis_sampah/edit', [JenisSampahController::class, 'update'])->name('jenis_sampah.update');
     Route::delete('/jenis_sampah/{id}', [JenisSampahController::class, 'destroy'])->name('jenis_sampah.destroy');
 });
+Route::middleware('auth')->group(function () {
+    Route::get('/riwayattransaksi', [RiwayatController::class, 'index'])->name('riwayat.transaksi');
+});
 
 require __DIR__ . '/auth.php';

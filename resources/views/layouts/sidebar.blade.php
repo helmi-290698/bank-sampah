@@ -22,14 +22,14 @@
 
     <ul class="menu-inner py-1">
         <!-- Page -->
-        <li class="menu-item {{ 'jenis_sampah' == request()->path() ? 'active' : '' }}">
-            <a href="" class="menu-link">
+        <li class="menu-item {{ 'dashboard' == request()->path() ? 'active' : '' }}">
+            <a href="{{ route('dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons mdi mdi-package-variant-closed"></i>
                 <div data-i18n="Page 1">Jenis Sampah</div>
             </a>
         </li>
-        <li class="menu-item {{ 'purchase' == request()->path() ? 'active' : '' }}">
-            <a href="" class="menu-link">
+        <li class="menu-item {{ 'riwayattransaksi' == request()->path() ? 'active' : '' }}">
+            <a href="{{ route('riwayat.transaksi') }}" class="menu-link">
                 <i class="menu-icon tf-icons mdi mdi-cart-variant"></i>
                 <div data-i18n="Page 2">Riwayat Transaksi</div>
             </a>
