@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
 
     <!-- Vendors CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/spinkit/spinkit.css') }}" />
@@ -244,6 +245,36 @@
                         </div>
 
                     </div>
+                    <div class="container-xxl flex-grow-1 container-p-y">
+                        <h4 class="fw-bold py-3 mb-4">Dashboard</h4>
+
+
+                        <div class="row mb-5">
+
+                            <div class="w-100"></div>
+                            <div class="col-md-8">
+                                <div class="card card-action mb-4">
+                                    <div class="card-header">
+                                        <h5 class="h5">Riwayat Transaksi Terakhir</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        {{ $dataTable->table() }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card card-action mb-4">
+                                    <div class="card-header">
+                                        <h5 class="h5">Grafik Trend Sampah</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        {!! $chart->container() !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                     <!--/ Content -->
 
                     <!-- Footer -->
@@ -312,6 +343,15 @@
         let url = `{{ url('/') }}`;
     </script>
     <script src="{{ asset('js/frontend.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.0.3/css/buttons.dataTables.min.css">
+    <script src="https://cdn.datatables.net/buttons/1.0.3/js/dataTables.buttons.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.0.3/css/buttons.dataTables.min.css">
+    <script src="https://cdn.datatables.net/buttons/1.0.3/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+    <script src="{{ asset('/vendor/datatables/buttons.server-side.js') }}"></script>
+    {{ $dataTable->scripts() }}
+    {!! $chart->script() !!}
     <script src="{{ asset('assets/vendor/libs/toastr/toastr.js') }}"></script>
     <script>
         $(document).ready(function() {

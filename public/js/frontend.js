@@ -75,6 +75,7 @@ $("#form-input-riwayat").on("submit", function(e) {
             
             `);
                 toastr.success(data.message);
+                $('#riwayat-table').DataTable().ajax.reload();
                 
             }
         },
