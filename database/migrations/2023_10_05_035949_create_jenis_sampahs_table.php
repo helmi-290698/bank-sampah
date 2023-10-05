@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('jenis_sampahs', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->enum('kategori', ['Organik', 'Anorganik', 'Bahan Berbahaya']);
+            $table->text('deskripsi')->nullable();
+            $table->string('foto')->nullable();
+            $table->double('harga');
             $table->timestamps();
         });
     }

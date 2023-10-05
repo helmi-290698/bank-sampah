@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\JenisSampahDataTable;
 use App\Models\Jenis_sampah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class JenisSampahController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(JenisSampahDataTable $datatable)
     {
-        return view('admin.jenis-sampah');
+        $title = 'Jenis Sampah';
+        return $datatable->render('admin.jenis-sampah', ['title' => $title]);
     }
 
     /**
@@ -28,7 +32,36 @@ class JenisSampahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'kategori' => 'required',
+            'harga' => 'required|numeric',
+        ]);
+
+        if ($validatedData->fails()) {
+            return response()->json(['status' => 0, 'error' => $validatedData->errors()]);
+        }
+
+        if ($request->file('foto')) {
+            $files = $request->file('foto');
+            $name = rand(1, 999);
+            $extension = $files->getClientOriginalExtension();
+            $newname = $name . '.' . $extension;
+            Storage::putFileAs('foto', $files, $newname);
+            $file = '/storage/foto/' . $newname;
+        } else {
+            $file = null;
+        }
+
+        Jenis_sampah::create([
+            'name' => $request->name,
+            'kategori' => $request->kategori,
+            'harga' => $request->harga,
+            'deskripsi' => $request->deskripsi,
+            'foto' => $file,
+        ]);
+
+        return response()->json(['status' => 1, 'message' => 'Data Added successfully!']);
     }
 
     /**
@@ -50,16 +83,35 @@ class JenisSampahController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Jenis_sampah $jenis_sampah)
+    public function update(Request $request)
     {
         //
+        $validated = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'kategori' => 'required',
+            'harga' => 'required|numeric',
+        ]);
+
+        if ($validated->fails()) {
+            return response()->json(['status' => 0, 'error' => $validated->errors()]);
+        }
+
+        $jenis_sampah = Jenis_sampah::where('id',  $request->id)->update([
+            'name' => $request->name,
+            'kategori' => $request->kategori,
+            'harga' => $request->harga,
+            'deskripsi' => $request->deskripsi,
+        ]);
+
+        return response()->json(['status' => 1, 'message' => 'Data Added successfully!']);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Jenis_sampah $jenis_sampah)
+    public function destroy($id)
     {
-        //
+        Jenis_sampah::where('id', '=', $id)->delete();
+        return response()->json(['status' => true, 'message' => 'Delete data Successfully!']);
     }
 }
