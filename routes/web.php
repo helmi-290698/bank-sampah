@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\JenisSampahController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RiwayatController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [FrontendController::class, 'index'])->name('frontend');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -28,6 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::get('/jenis_sampah/show', [JenisSampahController::class, 'show'])->name('jenis_sampah.show');
+Route::get('/jenis_sampah/show/{id}', [JenisSampahController::class, 'showByid'])->name('jenis_sampah.show');
+Route::post('/riwayat', [RiwayatController::class, 'store'])->name('riwayat.store');
 Route::middleware('auth')->group(function () {
     Route::post('/jenis_sampah', [JenisSampahController::class, 'store'])->name('jenis_sampah.store');
     Route::patch('/jenis_sampah/edit', [JenisSampahController::class, 'update'])->name('jenis_sampah.update');

@@ -31,13 +31,7 @@
         <li class="menu-item {{ 'purchase' == request()->path() ? 'active' : '' }}">
             <a href="" class="menu-link">
                 <i class="menu-icon tf-icons mdi mdi-cart-variant"></i>
-                <div data-i18n="Page 2">Purchase</div>
-            </a>
-        </li>
-        <li class="menu-item {{ 'sales' == request()->path() ? 'active' : '' }}">
-            <a href="" class="menu-link">
-                <i class="menu-icon tf-icons mdi mdi-sale"></i>
-                <div data-i18n="Page 2">Sale</div>
+                <div data-i18n="Page 2">Riwayat Transaksi</div>
             </a>
         </li>
     </ul>

@@ -69,7 +69,13 @@ class JenisSampahController extends Controller
      */
     public function show(Jenis_sampah $jenis_sampah)
     {
-        //
+        $data = Jenis_sampah::all();
+        return $data;
+    }
+    public function showByid($id)
+    {
+        $data = Jenis_sampah::find($id);
+        return $data;
     }
 
     /**
