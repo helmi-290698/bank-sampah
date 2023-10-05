@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('jenis_sampah_id');
+            $table->string('no_telepon');
             $table->string('jumlah_kg');
             $table->double('total_harga');
+            $table->string('lama_penyimpanan');
+            $table->enum('status', ['Disetor', 'Belum Disetor']);
             $table->timestamps();
         });
     }

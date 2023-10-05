@@ -157,7 +157,15 @@
                                                         <span class="text-danger name_error"></span>
                                                     </div>
                                                 </div>
-                                                <div class="col-4">
+                                                <div class="col-12">
+                                                    <div class="form-floating form-floating-outline mb-3">
+                                                        <input class="form-control" id="no_telepon" type="number"
+                                                            name="no_telepon" placeholder="No Telepon" autofocus />
+                                                        <label for="No Telepon">No Telepon</label>
+                                                        <span class="text-danger no_telepon_error"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
                                                     <div class="form-floating form-floating-outline mb-3">
                                                         <select name="jenis_sampah_id" id="jenis_sampah_id"
                                                             class="form-control">
@@ -168,7 +176,24 @@
                                                         <span class="text-danger jenis_sampah_id_error"></span>
                                                     </div>
                                                 </div>
-                                                <div class="col-4">
+                                                <div class="col-6">
+                                                    <div class="mb-3">
+                                                        <div class="input-group input-group-merge ">
+
+                                                            <div class="form-floating form-floating-outline">
+                                                                <input type="number" class="form-control"
+                                                                    name="lama_penyimpanan" id="lama_penyimpanan"
+                                                                    placeholder="499"
+                                                                    aria-label="Amount (to the nearest dollar)"
+                                                                    min="1" />
+                                                                <label>Lama Penyipanan</label>
+                                                            </div>
+                                                            <span class="input-group-text">Hari</span>
+                                                        </div>
+                                                        <span class="text-danger harga_error "></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
                                                     <div class="mb-3">
                                                         <div class="input-group input-group-merge ">
                                                             <span class="input-group-text">Kg</span>
@@ -183,7 +208,7 @@
                                                         <span class="text-danger harga_error "></span>
                                                     </div>
                                                 </div>
-                                                <div class="col-4">
+                                                <div class="col-6">
 
                                                     <div class="mb-3">
                                                         <div class="input-group input-group-merge ">
@@ -208,8 +233,11 @@
                             </div>
                             <div class="col-md">
                                 <div class="card card-action mb-4">
-                                    <div class="card-body">
+                                    <div class="card-header">
                                         <h5 class="h5">Detail Transaksi</h5>
+                                    </div>
+                                    <div class="card-body" id="detail">
+
                                     </div>
                                 </div>
                             </div>

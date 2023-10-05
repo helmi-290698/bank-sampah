@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jenis_sampah;
 use App\Models\Riwayat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -31,9 +32,11 @@ class RiwayatController extends Controller
     {
         $validatedData = Validator::make($request->all(), [
             'name' => 'required|max:255',
+            'no_telepon' => 'required|max:255',
             'jenis_sampah_id' => 'required',
-            'jumlah_kg' => 'required|numeric',
+            'jumlah_kg' => 'required|numeric|min:0',
             'total_biaya' => 'required',
+            'lama_penyimpanan' => 'required|numeric|min:0',
         ]);
 
         if ($validatedData->fails()) {
@@ -42,14 +45,17 @@ class RiwayatController extends Controller
 
         $riwayat =  Riwayat::create([
             'name' => $request->name,
+            'no_telepon' => $request->no_telepon,
             'jenis_sampah_id' => $request->jenis_sampah_id,
             'jumlah_kg' => $request->jumlah_kg,
             'total_harga' => $request->total_biaya,
+            'lama_penyimpanan' => $request->lama_penyimpanan,
+            'status' => 'Belum Disetor'
         ]);
 
-        
+        $hasil = Riwayat::with(['jenis_sampah'])->where('id', '=', $riwayat->id)->first();
 
-        return response()->json(['status' => 1, 'message' => 'Data Added successfully!']);
+        return response()->json(['status' => 1, 'data' => $hasil, 'message' => 'Data Added successfully!']);
     }
 
     /**

@@ -45,7 +45,6 @@ $("#form-input-riwayat").on("submit", function(e) {
             $(".is-invalid").removeClass("is-invalid");
         },
         success: function (data) {
-           console.log(data);
             if (data.status == 0) {
                 $.each(data.error, function (prefix, val) {
                     $("input[name='"+prefix+"']").addClass("is-invalid");
@@ -55,7 +54,26 @@ $("#form-input-riwayat").on("submit", function(e) {
                    
                 });
             } else {
-                
+            $('#detail').html(`
+          
+            <dl class="row mb-4">
+                    <dd class="col-4">Nama</dd>
+                    <dd class="col-8">: ${data.data.name}</dd>
+                    <dd class="col-4">No Telepon</dd>
+                    <dd class="col-8">: ${data.data.no_telepon}</dd>
+                    <dd class="col-4">Jenis Sampah</dd>
+                    <dd class="col-8">: ${data.data.jenis_sampah.name}</dd>
+                    <dd class="col-4">Lama Penyimpanan</dd>
+                    <dd class="col-8">: ${data.data.lama_penyimpanan} Hari</dd>
+                    <dd class="col-4">Berat Sampah</dd>
+                    <dd class="col-8">:  ${data.data.jumlah_kg} Kg</dd>
+                    <dd class="col-4">Harga Per Kg</dd>
+                    <dd class="col-8">: Rp. ${data.data.jenis_sampah.harga}</dd>
+                    <dd class="col-4">Jumlah yang Diterima</dd>
+                    <dd class="col-8">: Rp. ${data.data.total_harga}</dd>
+            </dl>
+            
+            `);
                 toastr.success(data.message);
                 
             }

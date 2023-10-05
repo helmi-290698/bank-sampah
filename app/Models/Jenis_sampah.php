@@ -9,4 +9,8 @@ class Jenis_sampah extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+    public function riwayat()
+    {
+        return $this->hasMany(Riwayat::class);
+    }
 }
